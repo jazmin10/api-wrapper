@@ -28,18 +28,17 @@ class Backend {
   }
 
   post(url, obj) {
-  	return new Promise(resolve => {
-  		fetch(this.baseUrl + url, {
-	  		method: "POST",
-	  		headers: {
-	  			"Content-Type": "application/json"
-	  		},
-	  		body: JSON.stringify(obj)
-			})
-	  		.then(response => response.json())
-	  		.then(data => resolve(data))
-	  		.catch(error => console.log(error));
-  	});
+  	// Refactoring code: .then() returns a promise! no need to create a promise
+  	// response.json() will be the value of the promise
+  	return fetch(this.baseUrl + url, {
+			  		method: "POST",
+			  		headers: {
+			  			"Content-Type": "application/json"
+			  		},
+			  		body: JSON.stringify(obj)
+					})
+	  				.then(response => response.json())
+	  				.catch(error => console.log(error));
   }
 }
 
