@@ -16,7 +16,8 @@ class Backend {
   	return new Promise(resolve => {
   		fetch(this.baseUrl + url)
   		.then(response => response.json())
-  		.then(data => resolve(data));
+  		.then(data => resolve(data))
+  		.catch(error => console.log(error));
   	});
   	
   }
