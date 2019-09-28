@@ -13,9 +13,12 @@ class Backend {
   }
 
   get(url) {
-  	fetch(this.baseUrl + url)
+  	return new Promise(resolve => {
+  		fetch(this.baseUrl + url)
   		.then(response => response.json())
-  		.then(data => console.log(data));
+  		.then(data => resolve(data));
+  	});
+  	
   }
 }
 
@@ -26,9 +29,9 @@ API.setBaseUrl("https://api.learnjavascript.online/demo");
 // console.log(API.getBaseUrl());
 
 API.get("/notifications/new.json")
-// .then(data => {
-//     console.log(data.count);
-// });
+.then(data => {
+    console.log(data.count);
+});
 
 // API.post("/food.json", {
 //     food: "Pasta"
