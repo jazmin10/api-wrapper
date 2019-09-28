@@ -11,13 +11,19 @@ class Backend {
   getBaseUrl() {
   	return this.baseUrl;
   }
+
+  get(url) {
+  	// fetch(this.baseUrl + url).then(response => {
+  	// 	console.log(response);
+  	// })
+  }
 }
 
 
 //sample usage
 const API = new Backend();
 API.setBaseUrl("https://api.learnjavascript.online/demo");
-console.log(API.getBaseUrl());
+// console.log(API.getBaseUrl());
 
 // API.get("/notifications/new.json")
 // .then(data => {
