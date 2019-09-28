@@ -23,16 +23,18 @@ class Backend {
   }
 
   post(url, obj) {
-  	fetch(this.baseUrl + url, {
-  		method: "POST",
-  		headers: {
-  			"Content-Type": "application/json"
-  		},
-  		body: JSON.stringify(obj)
-		})
-  		.then(response => response.json())
-  		.then(data => console.log(data))
-  		.catch(error => console.log(error));
+  	return new Promise(resolve => {
+  		fetch(this.baseUrl + url, {
+	  		method: "POST",
+	  		headers: {
+	  			"Content-Type": "application/json"
+	  		},
+	  		body: JSON.stringify(obj)
+			})
+	  		.then(response => response.json())
+	  		.then(data => resolve(data))
+	  		.catch(error => console.log(error));
+  	});
   }
 }
 
@@ -50,6 +52,6 @@ API.setBaseUrl("https://api.learnjavascript.online/demo");
 API.post("/food.json", {
     food: "Pasta"
 })
-// .then(data => {
-//     console.log(data);
-// });
+.then(data => {
+    console.log(data);
+});
