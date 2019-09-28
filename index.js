@@ -21,6 +21,18 @@ class Backend {
   	});
   	
   }
+
+  post(url, obj) {
+  	fetch(this.baseUrl + url, {
+  		method: "POST",
+  		headers: {
+  			"Content-Type": "application/json"
+  		},
+  		body: JSON.stringify(obj)
+		})
+  		.then(response => response.json())
+  		.then(data => console.log(data));
+  }
 }
 
 
@@ -29,14 +41,14 @@ const API = new Backend();
 API.setBaseUrl("https://api.learnjavascript.online/demo");
 // console.log(API.getBaseUrl());
 
-API.get("/notifications/new.json")
-.then(data => {
-    console.log(data.count);
-});
+// API.get("/notifications/new.json")
+// .then(data => {
+//     console.log(data.count);
+// });
 
-// API.post("/food.json", {
-//     food: "Pasta"
-// })
+API.post("/food.json", {
+    food: "Pasta"
+})
 // .then(data => {
 //     console.log(data);
 // });
