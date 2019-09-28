@@ -3,22 +3,26 @@ class Backend {
   constructor(){
       this.baseUrl = '';
   }
+
+  setBaseUrl(baseUrl) {
+  	this.baseUrl = baseUrl;
+  }
 }
 
 
 //sample usage
 const API = new Backend();
 API.setBaseUrl("https://api.learnjavascript.online/demo");
-console.log(API.getBaseUrl());
+// console.log(API.getBaseUrl());
 
-API.get("/notifications/new.json")
-.then(data => {
-    console.log(data.count);
-});
+// API.get("/notifications/new.json")
+// .then(data => {
+//     console.log(data.count);
+// });
 
-API.post("/food.json", {
-    food: "Pasta"
-})
-.then(data => {
-    console.log(data);
-});
+// API.post("/food.json", {
+//     food: "Pasta"
+// })
+// .then(data => {
+//     console.log(data);
+// });
